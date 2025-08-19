@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Sandalu Eco Resort</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4a6f4a;
+            --primary-light: #6d8b6d;
+            --secondary: #d4b483;
+            --accent: #8c5e3c;
+            --light: #f9f7f2;
+            --dark: #333333;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            background-color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e0c69a;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+       .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            margin-left: 10px;
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .gallery-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://cdn.atrsafari.com/cdn/05explore/locations-and-lodges/asia/srilanka/yala/0/stills/00page/01-1920.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 60px;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .gallery-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background-color: var(--light);
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            background-color: white;
+            border: 1px solid var(--primary);
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 350px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-title {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            transform: translateY(20px);
+            transition: var(--transition);
+            transition-delay: 0.1s;
+            opacity: 0;
+        }
+
+        .gallery-desc {
+            color: #ddd;
+            font-size: 0.95rem;
+            transform: translateY(20px);
+            transition: var(--transition);
+            transition-delay: 0.2s;
+            opacity: 0;
+        }
+
+        .gallery-item:hover .gallery-title,
+        .gallery-item:hover .gallery-desc {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* History Section */
+        .history-section {
+            padding: 100px 0;
+            background: linear-gradient(rgba(74, 111, 74, 0.9), rgba(74, 111, 74, 0.9)), url('https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover;
+            color: white;
+            text-align: center;
+        }
+
+        .history-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .history-content h2 {
+            color: var(--secondary);
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+        }
+
+        .history-content p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .footer-links h3,
+        .footer-newsletter h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .newsletter-form button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background: var(--primary-light);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .gallery-hero h1 {
+                font-size: 3rem;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(255, 255, 255, 0.95);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: var(--transition);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .gallery-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+            
+            .filter-btn {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+   <header>
+        <div class="container header-container">
+            <div class="logo">
+                 <img src="images/WhatsApp_Image_2025-08-19_at_13.00.22_5a948d7f-removebg-preview.png" alt="Sandalu Eco Resort Logo" class="logo-img">
+        </a>
+              
+            
+            </div>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#rooms">Rooms</a></li>
+                <li><a href="index.html#experiences">Experiences</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="gallery-hero">
+        <div class="container hero-content">
+            <h1>Resort Gallery</h1>
+            <p>Experience the beauty of Sandalu through our visual journey</p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Eco Paradise</h2>
+                <p>Capturing moments of harmony with nature</p>
+            </div>
+            
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="accommodation">Accommodation</button>
+                <button class="filter-btn" data-filter="nature">Nature</button>
+                <button class="filter-btn" data-filter="wildlife">Wildlife</button>
+                <button class="filter-btn" data-filter="experiences">Experiences</button>
+            </div>
+            
+            <div class="gallery-container">
+                <!-- Accommodation Images -->
+                <div class="gallery-item fade-in" data-category="accommodation">
+                    <img src="https://q-xx.bstatic.com/xdata/images/hotel/1204x910/484460382.webp?k=80e5bfb069dd9cb576344d33050eef6e5301522f5b697603efa550a00de66f25&o=" alt="Luxury Villa" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Forest View Villa</h3>
+                        <p class="gallery-desc">Our premium villas offer panoramic views of the surrounding wilderness, blending luxury with nature. Each villa features locally-sourced materials and eco-friendly amenities.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in" data-category="accommodation">
+                    <img src="https://q-xx.bstatic.com/xdata/images/hotel/590x444/484460449.webp?k=7667e0e99bb29d7cefbc4fb6c0854b264ec96bfd0618964f3cf606b0934d4de2&o=" alt="Treehouse Suite" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Treehouse Retreat</h3>
+                        <p class="gallery-desc">Experience life among the treetops in our unique treehouse accommodations. Built around living trees with minimal environmental impact.</p>
+                    </div>
+                </div>
+                
+                 <div class="gallery-item fade-in" data-category="accommodation">
+                    <img src="https://q-xx.bstatic.com/xdata/images/hotel/590x444/484460453.webp?k=884f21995686d8ed6fa6552b34006c3c014860de22afbb807e77c3fe05f1ed97&o=" alt="Treehouse Suite" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Treehouse Retreat</h3>
+                        <p class="gallery-desc">Experience life among the treetops in our unique treehouse accommodations. Built around living trees with minimal environmental impact.</p>
+                    </div>
+                </div>
+                
+                <!-- Nature Images -->
+                <div class="gallery-item fade-in" data-category="nature">
+                    <img src="https://as1.ftcdn.net/jpg/03/03/52/26/1000_F_303522634_iKJtYCrXDV1goR26OfaTwLje48dAHh1q.jpg" alt="Sunrise" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Morning Serenity</h3>
+                        <p class="gallery-desc">Witness breathtaking sunrises over Yala National Park from our observation deck. A perfect start to your day in the wilderness.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in" data-category="nature">
+                    <img src="https://www.lanka-excursions-holidays.com/uploads/4/0/2/1/40216937/9-3-26-19-situlpahuwa-excavation_orig.jpg" alt="Forest" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Ancient Forest</h3>
+                        <p class="gallery-desc">Our nature trails wind through centuries-old forests, home to diverse flora and fauna. Guided walks available daily.</p>
+                    </div>
+                </div>
+                
+                <!-- Wildlife Images -->
+                <div class="gallery-item fade-in" data-category="wildlife">
+                    <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/9b/ad/90/this-park-is-home-to.jpg" alt="Elephant" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Gentle Giants</h3>
+                        <p class="gallery-desc">Spot Sri Lankan elephants in their natural habitat during our guided safari tours. Ethical viewing with minimal disturbance.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in" data-category="wildlife">
+                    <img src="https://justnature.travel/wp-content/uploads/2023/11/Untitled-design-4.png" alt="Leopard" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Yala Leopard</h3>
+                        <p class="gallery-desc">Yala National Park has one of the highest leopard densities in the world. Our expert guides know the best viewing spots.</p>
+                    </div>
+                </div>
+                
+                <!-- Experiences Images -->
+                <div class="gallery-item fade-in" data-category="experiences">
+                    <img src="https://i.pinimg.com/1200x/7d/2b/6f/7d2b6f25089771df47564160b74a5a75.jpg" alt="Dining" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Jungle Dining</h3>
+                        <p class="gallery-desc">Experience gourmet meals prepared with organic local ingredients in our open-air jungle restaurant. A culinary adventure!</p>
+                    </div>
+                </div>
+
+                 <div class="gallery-item fade-in" data-category="experiences">
+                    <img src="https://icter.lk/wp-content/uploads/2023/04/1641286121961_ricecurrychicken_m.jpg" alt="Dining" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Jungle Dining</h3>
+                        <p class="gallery-desc">Experience gourmet meals prepared with organic local ingredients in our open-air jungle restaurant. A culinary adventure!</p>
+                    </div>
+                </div>
+
+                 <div class="gallery-item fade-in" data-category="experiences">
+                    <img src="https://i.ytimg.com/vi/bFH6OjQ2iTM/maxresdefault.jpg" alt="Dining" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Jungle Dining</h3>
+                        <p class="gallery-desc">Experience gourmet meals prepared with organic local ingredients in our open-air jungle restaurant. A culinary adventure!</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item fade-in" data-category="experiences">
+                    <img src="https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/10/48/03/3d.jpg" alt="Safari" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Wildlife Safari</h3>
+                        <p class="gallery-desc">Our sunrise and sunset safaris offer the best wildlife viewing opportunities with expert naturalist guides.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in" data-category="nature">
+                    <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/e0/2b/cb/9.jpg?w=500&h=500&s=1" alt="Waterfall" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Hidden Waterfall</h3>
+                        <p class="gallery-desc">Discover secluded waterfalls during our guided hikes. Refresh yourself in natural pools surrounded by lush vegetation.</p>
+                    </div>
+                </div>
+                
+               
+                
+                <div class="gallery-item fade-in" data-category="accommodation">
+                    <img src="https://q-xx.bstatic.com/xdata/images/hotel/max500/227700266.jpg?k=4c4c2522922be054b87d0b5da1b9a21b250332766d2ad2cdb4d17c2860ca355e&o=" alt="Pool" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Infinity Pool</h3>
+                        <p class="gallery-desc">Our eco-friendly infinity pool blends with the horizon, offering stunning views while conserving water through advanced filtration.</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item fade-in" data-category="wildlife">
+                    <img src="https://images.unsplash.com/photo-1550853024-fae8cd4be47f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80" alt="Birds" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <h3 class="gallery-title">Bird Watching</h3>
+                        <p class="gallery-desc">Over 200 bird species call Yala home. Join our expert ornithologist for early morning bird watching sessions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- History Section -->
+    <section class="history-section">
+        <div class="container">
+            <div class="history-content fade-in">
+                <h2>Our Eco Journey</h2>
+                <p>Sandalu Eco Resort was established in 2010 with a vision to create a sanctuary where luxury meets sustainability. Our founders, passionate conservationists, transformed 50 acres of wilderness into an eco-paradise while preserving 90% of the natural habitat.</p>
+                <p>We've pioneered sustainable tourism practices in Sri Lanka, from our solar-powered facilities to our zero-waste initiatives. Our resort has won multiple awards for environmental stewardship while providing unforgettable experiences for our guests.</p>
+                <p>Today, we continue to innovate, working with local communities and conservation organizations to protect Yala's unique ecosystem for future generations.</p>
+                <a href="index.html#about" class="btn btn-secondary">Our Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <h2>Sandalu Eco Resort</h2>
+                    </div>
+                    <p>An eco-luxury resort nestled in the wilderness of Yala, Sri Lanka. Committed to sustainable tourism and unforgettable experiences.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#rooms">Accommodations</a></li>
+                        <li><a href="index.html#experiences">Experiences</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive special offers and updates from Sandalu Eco Resort.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Sandalu Eco Resort. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: var(--secondary);"></i> in Sri Lanka</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Gallery filtering
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const filter = btn.getAttribute('data-filter');
+                
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const appearOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -100px 0px"
+        };
+        
+        const appearOnScroll = new IntersectionObserver((entries, appearOnScroll) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('appear');
+                appearOnScroll.unobserve(entry.target);
+            });
+        }, appearOptions);
+        
+        fadeElements.forEach(element => {
+            appearOnScroll.observe(element);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
