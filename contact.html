@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Sandalu Eco Resort</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4a6f4a;
+            --primary-light: #6d8b6d;
+            --secondary: #d4b483;
+            --accent: #8c5e3c;
+            --light: #f9f7f2;
+            --dark: #333333;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--dark);
+            background-color: #ffffff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            background-color: #e0c69a;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 15px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* Hero Section for Contact Page */
+        .contact-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://dth.travel/wp-content/uploads/2018/09/A-mother-and-baby-elephant-in-a-lagoon-in-yala-national-park-sri-lanka-shutterstock_65580787-e1536663790987-scaled.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 60px;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .contact-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .contact-info {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .contact-info h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            align-items: flex-start;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            min-width: 40px;
+            padding-top: 5px;
+        }
+
+        .contact-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .contact-text p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .contact-hours {
+            margin-top: 30px;
+        }
+
+        .contact-hours h4 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .hours-list {
+            list-style: none;
+        }
+
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .contact-form h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+            background-color: var(--light);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(74, 111, 74, 0.1);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Map Section */
+        .map-section {
+            margin-top: 80px;
+            background-color: var(--light);
+            padding: 60px 0;
+        }
+
+        .map-container {
+            height: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .map-info {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .map-info p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            border-color: var(--primary);
+        }
+
+        .faq-question {
+            padding: 20px;
+            background-color: var(--light);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .faq-question i {
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-answer p {
+            padding: 20px 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about p {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .footer-links h3,
+        .footer-newsletter h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .map-container {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(255, 255, 255, 0.95);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: var(--transition);
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 15px 0;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 13px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Sandalu Eco Resort</h1>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#rooms">Rooms</a></li>
+                <li><a href="index.html#experiences">Experiences</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero contact-hero">
+        <div class="container hero-content">
+            <h1>Contact Us</h1>
+            <p>Reach out to us for reservations, inquiries, or any assistance you may need</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>We're here to help and answer any questions you might have</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info fade-in">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-text">
+                            <h4>Location</h4>
+                            <p>Yala National Park Road, Yala, Sri Lanka</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>+94 112 345 678</p>
+                            <p>+94 765 432 109</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>info@sandaluecoresort.com</p>
+                            <p>reservations@sandaluecoresort.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-hours">
+                        <h4>Reception Hours</h4>
+                        <ul class="hours-list">
+                            <li><span>Monday - Friday</span><span>8:00 AM - 10:00 PM</span></li>
+                            <li><span>Saturday</span><span>8:00 AM - 11:00 PM</span></li>
+                            <li><span>Sunday</span><span>8:00 AM - 9:00 PM</span></li>
+                            <li><span>24/7 Emergency</span><span>+94 112 345 999</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject">
+                                <option value="reservation">Reservation Inquiry</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="group">Group Booking</option>
+                                <option value="event">Event Planning</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Find Us</h2>
+                <p>Located near Yala National Park for your convenience</p>
+            </div>
+            
+            <div class="map-container fade-in">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.258747224876!2d81.516522!3d6.369583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMjInMTAuNSJOIDgxwrAzMScwMC4wIkU!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            
+            <div class="map-info fade-in">
+                <p>Our eco-resort is conveniently located just 10 minutes from the entrance to Yala National Park. We offer complimentary shuttle service to and from the park entrance for our guests during safari hours.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="section faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently Asked Questions</h2>
+                <p>Common questions about visiting our resort</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        What is the best way to reach Sandalu Eco Resort?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The most convenient way to reach us is by car. We're approximately a 5-hour drive from Colombo. Alternatively, you can fly to Mattala Rajapaksa International Airport (HRI), which is about 1.5 hours away. We can arrange airport transfers for our guests with advance notice.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        What is your cancellation policy?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can cancel your reservation free of charge up to 14 days before your scheduled arrival. Cancellations made 7-14 days prior to arrival will incur a 50% charge. Cancellations within 7 days of arrival will be charged the full amount. We recommend travel insurance for unforeseen circumstances.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        Do you offer safari packages?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer several safari packages that include accommodation, meals, and guided tours through Yala National Park. Our experienced naturalist guides will help you spot leopards, elephants, and hundreds of bird species. Packages can be customized to suit your preferences.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        Is the resort suitable for children?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We welcome families and have special activities designed for children, including nature walks, wildlife education sessions, and supervised craft activities. We also offer family suites and babysitting services upon request.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        What sustainability practices do you follow?
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>As an eco-resort, we're committed to sustainable tourism. Our practices include solar power generation, rainwater harvesting, organic waste composting, plastic-free operations, and sourcing local organic produce. We also contribute to wildlife conservation efforts in the Yala region.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <h2>Sandalu Eco Resort</h2>
+                    </div>
+                    <p>An eco-luxury resort nestled in the wilderness of Yala, Sri Lanka. Committed to sustainable tourism and unforgettable experiences.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#rooms">Accommodations</a></li>
+                        <li><a href="index.html#experiences">Experiences</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive special offers and updates from Sandalu Eco Resort.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Sandalu Eco Resort. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: var(--secondary);"></i> in Sri Lanka</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you soon.');
+                contactForm.reset();
+            });
+        }
+
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const appearOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -100px 0px"
+        };
+        
+        const appearOnScroll = new IntersectionObserver((entries, appearOnScroll) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('appear');
+                appearOnScroll.unobserve(entry.target);
+            });
+        }, appearOptions);
+        
+        fadeElements.forEach(element => {
+            appearOnScroll.observe(element);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
