@@ -937,44 +937,69 @@
         
 
     <!-- Branding Bar Section -->
-    <style>
-        .brand-bar {
-            background: #f9f9f9;
-            padding: 40px 0;
-            overflow: hidden;
-            position: relative;
-        }
+    <<!-- Branding Bar Section -->
+<style>
+    .brand-bar {
+        background: #f9f9f9;
+        padding: 30px 0;
+        overflow: hidden;
+        position: relative;
+    }
 
-        .brand-track {
-            display: flex;
-            width: calc(200%);
-            animation: scrollBrands 25s linear infinite;
-        }
+    .brand-track {
+        display: flex;
+        width: calc(200%);
+        animation: scrollBrands 25s linear infinite;
+    }
 
+    .brand-item {
+        flex: 0 0 auto;
+        margin: 0 20px; /* smaller margin for mobile */
+        filter: grayscale(100%);
+        opacity: 0.8;
+        transition: 0.3s;
+    }
+
+    .brand-item:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+    }
+
+    .brand-item img {
+        height: 50px; /* smaller logo for mobile */
+        width: auto;
+    }
+
+    @keyframes scrollBrands {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
         .brand-item {
-            flex: 0 0 auto;
-            margin: 0 40px;
-            filter: grayscale(100%);
-            opacity: 0.8;
-            transition: 0.3s;
+            margin: 0 15px;
         }
-
-        .brand-item:hover {
-            filter: grayscale(0%);
-            opacity: 1;
-        }
-
         .brand-item img {
-            height: 60px;
-            width: auto;
+            height: 40px;
         }
-
-        @keyframes scrollBrands {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
+        .brand-track {
+            animation: scrollBrands 30s linear infinite; /* slower scroll on mobile */
         }
-    </style>
+    }
 
+    @media (max-width: 480px) {
+        .brand-item {
+            margin: 0 10px;
+        }
+        .brand-item img {
+            height: 35px;
+        }
+        .brand-track {
+            animation: scrollBrands 35s linear infinite;
+        }
+    }
+</style>
     <section class="brand-bar">
         <div class="brand-track">
             <div class="brand-item"><img src="images/output-onlinepngtools (2).png" alt="TripAdvisor"></div>
