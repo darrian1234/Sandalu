@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sandalu Eco Resort | Yala, Sri Lanka</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -692,13 +694,74 @@
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition: opacity 0.8s ease, transform 0.9s ease;
         }
 
         .fade-in.appear {
             opacity: 1;
             transform: translateY(0);
+
         }
+
+        .brand-bar {
+            background: #f9f9f9;
+            padding: 40px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .brand-track {
+            display: flex;
+            width: calc(200%);
+            animation: scrollBrands 25s linear infinite;
+        }
+
+        .brand-item {
+            flex: 0 0 auto;
+            margin: 0 40px;
+            filter: grayscale(100%);
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+
+        .brand-item:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .brand-item img {
+            height: 60px;
+            width: auto;
+        }
+
+        @keyframes scrollBrands {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    z-index: 1000;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+
     </style>
 </head>
 <body>
@@ -937,69 +1000,8 @@
         
 
     <!-- Branding Bar Section -->
-   
-<style>
-    .brand-bar {
-        background: #f9f9f9;
-        padding: 30px 0;
-        overflow: hidden;
-        position: relative;
-    }
+    
 
-    .brand-track {
-        display: flex;
-        width: calc(200%);
-        animation: scrollBrands 25s linear infinite;
-    }
-
-    .brand-item {
-        flex: 0 0 auto;
-        margin: 0 20px; /* smaller margin for mobile */
-        filter: grayscale(100%);
-        opacity: 0.8;
-        transition: 0.3s;
-    }
-
-    .brand-item:hover {
-        filter: grayscale(0%);
-        opacity: 1;
-    }
-
-    .brand-item img {
-        height: 50px; /* smaller logo for mobile */
-        width: auto;
-    }
-
-    @keyframes scrollBrands {
-        from { transform: translateX(0); }
-        to { transform: translateX(-50%); }
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-        .brand-item {
-            margin: 0 15px;
-        }
-        .brand-item img {
-            height: 40px;
-        }
-        .brand-track {
-            animation: scrollBrands 30s linear infinite; /* slower scroll on mobile */
-        }
-    }
-
-    @media (max-width: 480px) {
-        .brand-item {
-            margin: 0 10px;
-        }
-        .brand-item img {
-            height: 35px;
-        }
-        .brand-track {
-            animation: scrollBrands 35s linear infinite;
-        }
-    }
-</style>
     <section class="brand-bar">
         <div class="brand-track">
             <div class="brand-item"><img src="images/output-onlinepngtools (2).png" alt="TripAdvisor"></div>
@@ -1007,10 +1009,11 @@
             <div class="brand-item"><img src="images/output-onlinepngtools (4).png" alt="Agoda"></div>
             <div class="brand-item"><img src="images/output-onlinepngtools (5).png" alt="Kiptra.com"></div>
             <!-- duplicate for seamless scroll -->
-            <div class="brand-item"><img src="images/output-onlinepngtools (2).png" alt="TripAdvisor"></div>
+             <div class="brand-item"><img src="images/output-onlinepngtools (2).png" alt="TripAdvisor"></div>
             <div class="brand-item"><img src="images/output-onlinepngtools.png" alt="Booking.com"></div>
             <div class="brand-item"><img src="images/output-onlinepngtools (4).png" alt="Agoda"></div>
             <div class="brand-item"><img src="images/output-onlinepngtools (5).png" alt="Kiptra.com"></div>
+           
     </section>
 
     <!-- Contact Section -->
@@ -1116,6 +1119,10 @@
             </div>
         </div>
     </footer>
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/1234567890" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
     <script>
         // Mobile Menu Toggle
@@ -1188,4 +1195,3 @@
     </script>
 </body>
 </html>
-
