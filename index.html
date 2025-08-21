@@ -928,6 +928,65 @@
             </div>
         </div>
     </section>
+    <!-- Gallery Section -->
+    <section class="section gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Find us on </h2>
+    
+        
+
+    <!-- Branding Bar Section -->
+    <style>
+        .brand-bar {
+            background: #f9f9f9;
+            padding: 40px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .brand-track {
+            display: flex;
+            width: calc(200%);
+            animation: scrollBrands 25s linear infinite;
+        }
+
+        .brand-item {
+            flex: 0 0 auto;
+            margin: 0 40px;
+            filter: grayscale(100%);
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+
+        .brand-item:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .brand-item img {
+            height: 60px;
+            width: auto;
+        }
+
+        @keyframes scrollBrands {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+    </style>
+
+    <section class="brand-bar">
+        <div class="brand-track">
+            <div class="brand-item"><img src="images/output-onlinepngtools (2).png" alt="TripAdvisor"></div>
+            <div class="brand-item"><img src="images/output-onlinepngtools.png" alt="Booking.com"></div>
+            <div class="brand-item"><img src="images/output-onlinepngtools (4).png" alt="Agoda"></div>
+            <div class="brand-item"><img src="images/output-onlinepngtools (5).png" alt="Kiptra.com"></div>
+            <!-- duplicate for seamless scroll -->
+            <div class="brand-item"><img src="images/output-onlinepngtools (2).png" alt="TripAdvisor"></div>
+            <div class="brand-item"><img src="images/output-onlinepngtools.png" alt="Booking.com"></div>
+            <div class="brand-item"><img src="images/output-onlinepngtools (4).png" alt="Agoda"></div>
+            <div class="brand-item"><img src="images/output-onlinepngtools (5).png" alt="Kiptra.com"></div>
+    </section>
 
     <!-- Contact Section -->
     <section class="section contact" id="contact">
@@ -1005,8 +1064,6 @@
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
                     </div>
                 </div>
                 <div class="footer-links">
@@ -1106,4 +1163,3 @@
     </script>
 </body>
 </html>
-
